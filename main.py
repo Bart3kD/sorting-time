@@ -30,10 +30,16 @@ algorithms = {
     "Python Sort": lambda x: x.sort(),
 }
 
-print(f"{'Rozmiar danych':<15} | {' | '.join(algorithms.keys()):<70}")
-print("-" * 110)
+def print_algorithms(arr: dict[str: any]) -> None:
+    res = f"{'Rozmiar danych':<15} "
+    for algorithm in arr:
+        res += f"{"| " + algorithm:<18}"
+    print(res)
+
+print_algorithms(algorithms)
+print("-" * 140)
 
 for size in data_sizes:
     data = generate_random_list(size)
-    results = [f"{measure_sort_time(alg, data):<10}" for alg in algorithms.values()]
+    results = [f"{measure_sort_time(alg, data):<15}" for alg in algorithms.values()]
     print(f"{size:<15} | {' | '.join(results):<70}")
