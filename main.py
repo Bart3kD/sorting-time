@@ -10,10 +10,10 @@ from introsort import intro_sort
 
 
 def generate_random_list(size: int) -> list[int]:
-    return [random.randint(1, 10000) for _ in range(size)]
+    return random.sample(range(size), size)
 
 def measure_sort_time(sort_function, data: list[int]) -> float:
-    data_copy = data[:]
+    data_copy = data.copy()
     start_time = time.time()
     sort_function(data_copy)
     end_time = time.time()
